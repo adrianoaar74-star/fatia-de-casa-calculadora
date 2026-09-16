@@ -1,0 +1,18 @@
+{
+  "name": "Fatia de Casa — Calculadora",
+  "short_name": "Fatia Calcula",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f1eb",
+  "theme_color": "#6d3a2a",
+  "description": "Calculadora offline de custo de ingredientes e preço sugerido de venda.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
