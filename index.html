@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#6d3a2a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Fatia Calcula" />
+  <title>Fatia de Casa — Calculadora de preço</title>
+  <meta name="description" content="Calculadora offline de custo de ingredientes e preço sugerido de venda para confeitaria." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header"><div class="brand"><span class="logo">FC</span><div><strong>Fatia de Casa</strong><small>Calculadora de preço • funciona offline</small></div></div><button id="newRecipeBtn" class="btn secondary">+ Nova receita</button></header>
+  <main class="app-shell">
+    <aside class="recipes-panel">
+      <div class="panel-title"><div><span>Minhas receitas</span><small>Salvas neste aparelho</small></div><span id="recipeCount" class="badge">0</span></div>
+      <div id="recipeList" class="recipe-list"></div>
+    </aside>
+
+    <section class="workspace">
+      <div class="recipe-head">
+        <div><span class="kicker">Precificação por ingredientes</span><input id="recipeName" class="recipe-name" value="Bolo de cenoura" aria-label="Nome da receita" /></div>
+        <div class="head-actions"><button id="duplicateBtn" class="icon-btn" title="Duplicar receita" aria-label="Duplicar receita">⧉</button><button id="deleteRecipeBtn" class="icon-btn danger" title="Excluir receita" aria-label="Excluir receita">⌫</button><button id="saveBtn" class="btn primary">Salvar receita</button></div>
+      </div>
+
+      <div class="offline-note"><span class="offline-dot"></span><strong>Uso offline:</strong> depois do primeiro acesso, a calculadora pode ser aberta sem internet neste aparelho.</div>
+      <div class="notice">Esta versão calcula somente o custo dos <strong>ingredientes</strong>. Embalagem, gás/energia, mão de obra, entrega, taxas e perdas não estão incluídos.</div>
+
+      <section class="card">
+        <div class="card-head"><div><h2>Ingredientes</h2><p>Informe quanto você comprou, quanto pagou e quanto usou na receita.</p></div><button id="addIngredientBtn" class="btn secondary">+ Adicionar</button></div>
+        <div class="ingredient-head"><span>Ingrediente</span><span>Qtd. comprada</span><span>Unid.</span><span>Preço pago</span><span>Qtd. usada</span><span>Unid.</span><span>Custo</span><span></span></div>
+        <div id="ingredients" class="ingredients"></div>
+      </section>
+
+      <section class="pricing-grid">
+        <div class="card controls-card">
+          <div class="field-row"><label>Rendimento da receita <small>quantos itens ela produz</small></label><div class="yield-wrap"><input id="yieldQty" type="number" min="1" step="1" value="1"><span>un.</span></div></div>
+          <div class="slider-block"><div class="slider-top"><label>Percentual de lucro sobre o custo</label><strong id="marginLabel">70%</strong></div><input id="marginSlider" type="range" min="0" max="200" step="1" value="70"><div class="slider-scale"><span>0%</span><span>50%</span><span>100%</span><span>150%</span><span>200%</span></div><p>Ex.: 70% acrescenta 70% ao custo dos ingredientes. Isso é uma estimativa de preço, não uma margem líquida contábil.</p></div>
+        </div>
+
+        <div class="summary-card">
+          <span class="summary-kicker">Preço sugerido de venda</span><strong id="salePrice" class="big-price">R$ 0,00</strong><div class="summary-grid"><div><span>Custo da receita</span><strong id="totalCost">R$ 0,00</strong></div><div><span>Custo por unidade</span><strong id="unitCost">R$ 0,00</strong></div><div><span>Lucro estimado</span><strong id="profitValue">R$ 0,00</strong></div><div><span>Lucro por unidade</span><strong id="profitPerUnit">R$ 0,00</strong></div></div><div class="formula" id="formulaText">Custo + percentual selecionado</div>
+        </div>
+      </section>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
